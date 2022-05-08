@@ -4,14 +4,17 @@ import { fetchUsers } from "../store/users";
 import FilterTabs from "./FilterTabs";
 import Users from "./Users";
 import SearchTab from "./SearchTab";
-import LoopIcon from '@mui/icons-material/Loop';
+import LoopIcon from "@mui/icons-material/Loop";
 
 const UsersTable = () => {
   const dispatch = useDispatch();
   const { users, isLoading } = useSelector((state) => state.users);
+  const { filteredUsers } = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(fetchUsers());
+    console.log(filteredUsers)
+    console.log(users)
   }, [dispatch]);
 
   return !isLoading ? (
@@ -20,7 +23,7 @@ const UsersTable = () => {
       <table className="usersTable">
         <tbody>
           <FilterTabs />
-          {users.map((user) => (
+          {filteredUsers.map((user) => (
             <Users user={user} />
           ))}
         </tbody>
@@ -29,8 +32,6 @@ const UsersTable = () => {
   ) : (
     <LoopIcon />
   );
-
-  // {content}
 };
 
 export default UsersTable;

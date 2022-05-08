@@ -12,8 +12,9 @@ const slice = createSlice({
   reducers: {
     usersSuccess: (state, action) => {
       state.users = action.payload;
-      state.filteredUsers = action.payload;
       state.isLoading = false;
+      state.filteredUsers = action.payload;
+      
     },
     filterByName: (state) => {
       state.users.sort((a, b) => a.name.localeCompare(b.name));
@@ -39,14 +40,23 @@ const slice = createSlice({
       });
     },
     searchByName: (state, action) => {
+      // const filteredUsers = state.users.filter((user) =>
+      //   user.name.toLowerCase().includes(action.payload.toLowerCase())
+      // );
+      // return {
+      //   ...state,
+      //   users:
+      //     action.payload.length > 0 ? filteredUsers : [...state.filteredUsers],
+      // };
+
       const filteredUsers = state.users.filter((user) =>
-        user.name.toLowerCase().includes(action.payload.toLowerCase())
-      );
-      return {
-        ...state,
-        users:
-          action.payload.length > 0 ? filteredUsers : [...state.filteredUsers],
-      };
+      user.name.toLowerCase().includes(action.payload.toLowerCase())
+    );
+    return {
+      ...state,
+      filteredUsers:
+        action.payload.length > 0 ? filteredUsers : [...state.users]
+    };
     },
   },
 });
