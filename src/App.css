@@ -1,38 +1,81 @@
-.App {
+body {
+  background-image: url("./background.jpg");
+  background-position: center;
+  overflow-y: hidden;
+}
+
+.mainContainer {
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.usersTable {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 20px;
   text-align: center;
+  position: relative;
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%, 0);
+  min-width: 800px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.usersTable tr {
+  border-top: solid 1px black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.usersTable td,
+th {
+  padding: 10px;
+  border: solid 1px black;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.filterTabs th {
+  cursor: pointer;
+}
+
+.searchTab {
+  position: relative;
+  transform: translate(-50%, 0);
+  left: 50%;
+}
+
+.planetTab {
+  cursor: pointer;
+}
+
+.planetTab:hover {
+  background-color: white;
+}
+
+.loader {
   color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-.App-link {
-  color: #61dafb;
+
+.MuiSvgIcon-root {
+  color: white;
+  font-size: 150px !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 45% !important;
+  /* transform: translate(-50%, -50%) !important; */
+  animation: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
 }
 
-@keyframes App-logo-spin {
+@keyframes spin {
   from {
-    transform: rotate(0deg);
+      transform:rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+      transform:rotate(360deg);
   }
 }
