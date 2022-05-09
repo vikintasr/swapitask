@@ -14,13 +14,12 @@ const slice = createSlice({
       state.users = action.payload;
       state.isLoading = false;
       state.filteredUsers = action.payload;
-      
     },
     filterByName: (state) => {
-      state.users.sort((a, b) => a.name.localeCompare(b.name));
+      state.filteredUsers.sort((a, b) => a.name.localeCompare(b.name));
     },
     filterByHeight: (state) => {
-      state.users.sort((a, b) => {
+      state.filteredUsers.sort((a, b) => {
         if (b.height === "unknown" && a.height === "unknown") return 0;
         else if (b.height === "unknown") return -1;
         else if (a.height === "unknown") return 1;
@@ -28,7 +27,7 @@ const slice = createSlice({
       });
     },
     filterByMass: (state) => {
-      state.users.sort((a, b) => {
+      state.filteredUsers.sort((a, b) => {
         if (b.mass === "unknown" && a.mass === "unknown") return 0;
         else if (b.mass === "unknown") return -1;
         else if (a.mass === "unknown") return 1;
@@ -40,23 +39,14 @@ const slice = createSlice({
       });
     },
     searchByName: (state, action) => {
-      // const filteredUsers = state.users.filter((user) =>
-      //   user.name.toLowerCase().includes(action.payload.toLowerCase())
-      // );
-      // return {
-      //   ...state,
-      //   users:
-      //     action.payload.length > 0 ? filteredUsers : [...state.filteredUsers],
-      // };
-
       const filteredUsers = state.users.filter((user) =>
-      user.name.toLowerCase().includes(action.payload.toLowerCase())
-    );
-    return {
-      ...state,
-      filteredUsers:
-        action.payload.length > 0 ? filteredUsers : [...state.users]
-    };
+        user.name.toLowerCase().includes(action.payload.toLowerCase())
+      );
+      return {
+        ...state,
+        filteredUsers:
+          action.payload.length > 0 ? filteredUsers : [...state.users],
+      };
     },
   },
 });
