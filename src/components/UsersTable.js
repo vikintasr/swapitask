@@ -8,13 +8,11 @@ import LoopIcon from "@mui/icons-material/Loop";
 
 const UsersTable = () => {
   const dispatch = useDispatch();
-  const { users, isLoading } = useSelector((state) => state.users);
-  const { filteredUsers } = useSelector((state) => state.users);
+  // const { users, isLoading } = useSelector((state) => state.users);
+  const { filteredArrayState, isLoading } = useSelector((state) => state.users);
 
   useEffect(() => {
     dispatch(fetchUsers());
-    console.log(filteredUsers)
-    console.log(users)
   }, [dispatch]);
 
   return !isLoading ? (
@@ -23,7 +21,7 @@ const UsersTable = () => {
       <table className="usersTable">
         <tbody>
           <FilterTabs />
-          {filteredUsers.map((user) => (
+          {filteredArrayState.map((user) => (
             <Users user={user} />
           ))}
         </tbody>

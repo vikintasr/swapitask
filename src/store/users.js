@@ -5,7 +5,7 @@ const slice = createSlice({
   name: "users",
   initialState: {
     users: [],
-    filteredUsers: [],
+    filteredArrayState: [],
     isLoading: true,
     search: "",
   },
@@ -13,13 +13,13 @@ const slice = createSlice({
     usersSuccess: (state, action) => {
       state.users = action.payload;
       state.isLoading = false;
-      state.filteredUsers = action.payload;
+      state.filteredArrayState = action.payload;
     },
     filterByName: (state) => {
-      state.filteredUsers.sort((a, b) => a.name.localeCompare(b.name));
+      state.filteredArrayState.sort((a, b) => a.name.localeCompare(b.name));
     },
     filterByHeight: (state) => {
-      state.filteredUsers.sort((a, b) => {
+      state.filteredArrayState.sort((a, b) => {
         if (b.height === "unknown" && a.height === "unknown") return 0;
         else if (b.height === "unknown") return -1;
         else if (a.height === "unknown") return 1;
@@ -27,7 +27,7 @@ const slice = createSlice({
       });
     },
     filterByMass: (state) => {
-      state.filteredUsers.sort((a, b) => {
+      state.filteredArrayState.sort((a, b) => {
         if (b.mass === "unknown" && a.mass === "unknown") return 0;
         else if (b.mass === "unknown") return -1;
         else if (a.mass === "unknown") return 1;
@@ -44,7 +44,7 @@ const slice = createSlice({
       );
       return {
         ...state,
-        filteredUsers:
+        filteredArrayState:
           action.payload.length > 0 ? filteredUsers : [...state.users],
       };
     },
