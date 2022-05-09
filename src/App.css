@@ -21,8 +21,13 @@ body {
   min-width: 800px;
 }
 
+
 .usersTable tr {
   border-top: solid 1px black;
+}
+
+.usersTable tr td:first-child {
+  width: 200px;
 }
 
 .usersTable td,
@@ -33,6 +38,18 @@ th {
 
 .filterTabs th {
   cursor: pointer;
+}
+
+.filterTabs th:first-child {
+  width: 200px;
+}
+
+.filterTabs th:last-child {
+  width: 140px;
+}
+
+.filterTabs th {
+  width: 104px;
 }
 
 .searchTab {
