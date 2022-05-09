@@ -28,7 +28,10 @@ const UsersTable = () => {
       </table>
     </>
   ) : (
-    <LoopIcon />
+    <div className="loaderDiv">
+      <LoopIcon />
+      <p>Fetching the data...</p>
+    </div>
   );
 };
 

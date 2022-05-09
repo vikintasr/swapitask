@@ -52,6 +52,4 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-// const { usersSuccess } = slice.actions;
-
 export const userActions = slice.actions;
